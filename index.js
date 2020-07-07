@@ -17,11 +17,18 @@ function createShoppingItem(item) {
 }
 
 function main() {
-  $('button').on('click', function(evt) {
+  // provides functionality for rendering item based on user input
+  $('form').submit(function(evt) {
     evt.preventDefault();
     let userItem = $('input').val();
     $('.shopping-list').append(createShoppingItem(userItem));
     $('input').empty();
+  });
+
+  // strikes through items that are completed
+  $('button.shopping-item-toggle').on('click', function(evt) {
+    console.log($(this).parent().siblings());
+    $(this).parent().siblings().toggleClass('shopping-item__checked');
   });
 }
 
