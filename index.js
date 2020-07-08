@@ -26,9 +26,13 @@ function main() {
   });
 
   // strikes through items that are completed
-  $('button.shopping-item-toggle').on('click', function(evt) {
-    console.log($(this).parent().siblings());
-    $(this).parent().siblings().toggleClass('shopping-item__checked');
+  $('.shopping-list').on('click', '.shopping-item-toggle', function(evt) {
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+  });
+
+  // MIGHT delete a shopping list entry
+  $('.shopping-list').on('click', '.shopping-item-delete', function(evt) {
+    $(this).closest('li').remove();
   });
 }
 
